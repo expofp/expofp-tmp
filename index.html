@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--viebox-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,
+    maximum-scale=1, user-scalable=0"
+    />
+    <meta http-equiv="expires" content="timestamp" />
+  </head>
+  <body>
+    <button onclick="ddd()" style="width: 90vw; height: 20vh">Start</button>
+    <pre id="log"></pre>
+    <script>
+      let start = performance.now();
+
+      const canvases = 15000;
+      const labels = 1;
+
+      log(`Canvases: ${canvases}, Labels: ${labels}, Version: 6`);
+
+      function ddd() {
+        start = performance.now();
+        log("Started");
+        // alert("start");
+        const canvas = new OffscreenCanvas(2000,2000);
+        // const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        for (let k = 0; k < canvases; k++) {
+          canvas.width = 2000;
+          canvas.height = 2000;
+          canvas.height = k % 1 ? 2000 : 1999; 
+
+          // canvas.height = k; // Это работает
+          // canvas.height = k & 1 ? 2000 : 26; // Это ломает
+
+          if (k % 100 === 0) {
+            log(`Canvas: ${k}`);
+          }
+          // ctx.drawImage()
+          for (let i = 0; i < labels; i++) {
+            ctx.setTransform(1, 0, 0, 1, i * i, i * i);
+            ctx.fillRect(1, 1, 50, 50);
+            ctx.font = "32px Arial";
+            ctx.fillText("Hello World!", 38, 28);
+          }
+        }
+
+        // const generateSpriteCanvases = function () {
+        //     return new Array(5).fill(0).map((e, i) => () => {
+        //         canvas.width = 2000;
+        //         canvas.height = 2000; // Это работает
+        //         canvas.height = i & 1 ? 2000 : 26; // Это ломает
+
+        //         for (let i = 0; i < 200; i++) {
+        //             ctx.setTransform(1, 0, 0, 1, i * i, i * i);
+        //             ctx.font = "32px Arial";
+        //             ctx.fillText("Hello World!", 38.099998474121094, 28);
+        //         }
+
+        //         return canvas;
+        //     });
+        // };
+
+        // for (let i = 0; i < 5; i++) {
+        //     const canvases = generateSpriteCanvases();
+
+        //     for (const c of canvases) {
+        //         const canvas = c();
+        //     y}
+        // }
+        log("Done");
+      }
+
+      function log(text) {
+        const elapsed = Math.ceil(performance.now() - start);
+        console.log(elapsed, text);
+
+        // with date
+        document.getElementById("log").innerHTML += `${elapsed} ${text}\n`;
+      }
+    </script>
+  </body>
+</html>
