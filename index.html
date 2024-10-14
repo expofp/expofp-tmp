@@ -12,47 +12,15 @@
   <body>
     <button onclick="ddd()" style="width: 90vw; height: 20vh">Start</button>
     <pre id="log"></pre>
+    <script src="./imgs.js"></script>
     <script>
       let start = performance.now();
-      const imageDataArr = [];
-
-      const canvases = 6000;
-      const labels = 10;
-
-      log(`Canvases: ${canvases}, Labels: ${labels}, Version: 20`);
 
       function ddd() {
         start = performance.now();
         log("Started");
-        // alert("start");
-        // const canvas = new OffscreenCanvas(2000, 2000);
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
 
-        for (let k = 0; k < canvases; k++) {
-          // canvas.width = 2000;
-          // canvas.height = 2000;
-          // canvas.height = k % 2 ? 2000 : 100;
-          const width = 2000;
-          const height = k % 2 ? 2000 : 1000;
-
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-          if (k % 100 === 0) {
-            log(`Canvas: ${k}`);
-          }
-          for (let i = 0; i < labels; i++) {
-            ctx.setTransform(1, 0, 0, 1, i * i, i * i);
-            ctx.fillRect(1, 1, 50, 50);
-            ctx.font = "32px Arial";
-            const random = Math.random() * 1000000;
-            ctx.fillText("hhhhhh" + random.toString(), 38, 28);
-          }
-        }
-
-        const imageData = ctx.getImageData(0, 0, width, height);
-        // so it won't be garbage collected
-        imageDataArr.push(imageData);
+        console.log("imgs", imgs);
 
         log("Done");
       }

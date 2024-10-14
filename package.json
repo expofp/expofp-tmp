@@ -1,0 +1,12 @@
+{
+  "name": "sf",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "npx http-server",
+    "gen": "bun gen.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
