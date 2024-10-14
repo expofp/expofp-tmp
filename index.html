@@ -10,28 +10,9 @@
     <meta http-equiv="expires" content="timestamp" />
   </head>
   <body>
-    <button onclick="ddd()" style="width: 90vw; height: 20vh">Start</button>
+    <button id="startButton" style="width: 90vw; height: 20vh">Start</button>
     <pre id="log"></pre>
-    <script src="./imgs.js"></script>
-    <script>
-      let start = performance.now();
-
-      function ddd() {
-        start = performance.now();
-        log("Started");
-
-        console.log("imgs", imgs);
-
-        log("Done");
-      }
-
-      function log(text) {
-        const elapsed = Math.ceil(performance.now() - start);
-        console.log(elapsed, text);
-
-        // with date
-        document.getElementById("log").innerHTML += `${elapsed} ${text}\n`;
-      }
-    </script>
+    <script src="./run.ts" type="module"></script>
+    <canvas id="canvas" style="width: 300; height: 300"></canvas>
   </body>
 </html>

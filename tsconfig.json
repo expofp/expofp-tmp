@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "module": "CommonJS",  // Set the module system to CommonJS
+      "esModuleInterop": true, // Enables compatibility for ES modules
+      "resolveJsonModule": true, // If you need to import JSON
+      "outDir": "./dist",  // Output directory for compiled JavaScript files
+      "target": "ESNext"   // Target a modern version of JavaScript
+    }
+  }
