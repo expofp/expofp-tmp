@@ -14,8 +14,10 @@ fs.readdir(imagesPath, (err, files) => {
   }
 
   // Filter out any non-files (e.g., subdirectories)
-  const imgFiles = files.filter((file) =>
-    fs.statSync(path.join(imagesPath, file)).isFile()
+  const imgFiles = files.filter(
+    (file) =>
+      fs.statSync(path.join(imagesPath, file)).isFile() &&
+      (file.endsWith(".jpg") || file.endsWith(".png") || file.endsWith(".webp"))
   );
 
   // Create the array of image paths
