@@ -4,7 +4,8 @@
     "type": "module",
     "scripts": {
         "start": "vite --host",
-        "gen": "bun gen.ts"
+        "gen": "bun gen.ts",
+        "build": "vite build"
     },
     "author": "",
     "license": "ISC",
