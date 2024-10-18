@@ -1,16 +1,16 @@
 {
-  "name": "sf",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "start": "vite --host",
-    "gen": "bun gen.ts"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "typescript": "^5.6.3",
-    "vite": "^5.4.9"
-  }
+    "name": "sf",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "vite --host",
+        "gen": "bun gen.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "typescript": "^5.6.3",
+        "vite": "^5.4.9"
+    }
 }
