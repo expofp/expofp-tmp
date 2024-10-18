@@ -28,15 +28,19 @@ elBytesPerTexel.addEventListener("input", () => {
 
 document.getElementById("lastMBytes")!.innerText = parseInt(window.localStorage.getItem("achievedBytes")) / 1024 / 1024 + " MB";
 
-const textureWidth = 1024;
-const textureHeight = 1024;
+const textureWidth = 1024 * 3;
+const textureHeight = 1024 * 3;
 const canvas2D = document.createElement("canvas")! as HTMLCanvasElement;
 canvas2D.width = textureWidth;
 canvas2D.height = textureHeight;
 const context2D = canvas2D.getContext("2d")!;
 
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
+canvas.width = textureWidth;
+canvas.height = textureHeight;
 const gl = canvas.getContext("webgl2");
+
+const allTextures: WebGLTexture[] = [];
 
 function setup() {
     const targetBytes = targetMBytes * 1024 * 1024;
@@ -62,8 +66,6 @@ function setup() {
         start = performance.now();
 
         let achievedBytes = 0;
-
-        const allTextures: WebGLTexture[] = [];
 
         const logEvery = 1024 * 1024 * 100;
         let alreadyLogged = 0;
@@ -108,9 +110,7 @@ function setup() {
             allTextures.push(texture);
             i++;
             // doTexture();
-            // window.setTimeout(doTexture, 0);
-            doTexture();
-            // requestAnimationFrame(doTexture);
+            requestAnimationFrame(doTexture);
         }
 
         doTexture();
