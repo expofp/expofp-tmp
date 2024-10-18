@@ -3,7 +3,7 @@ let start = performance.now();
 const elMaxMBytes = document.getElementById("maxMBytes")! as HTMLInputElement;
 let targetMBytes = parseInt(window.localStorage.getItem("targetMBytes"));
 if (!targetMBytes) {
-    targetMBytes = 1000;
+    targetMBytes = 10000;
     window.localStorage.setItem("targetMBytes", targetMBytes.toString());
 }
 elMaxMBytes.value = targetMBytes.toString();
