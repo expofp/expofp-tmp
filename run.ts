@@ -28,24 +28,27 @@ elBytesPerTexel.addEventListener("input", () => {
 
 document.getElementById("lastMBytes")!.innerText = parseInt(window.localStorage.getItem("achievedBytes")) / 1024 / 1024 + " MB";
 
+const textureWidth = 1024;
+const textureHeight = 1024;
+const canvas2D = document.createElement("canvas")! as HTMLCanvasElement;
+canvas2D.width = textureWidth;
+canvas2D.height = textureHeight;
+const context2D = canvas2D.getContext("2d")!;
+
+const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
+const gl = canvas.getContext("webgl2");
+
 function setup() {
     const targetBytes = targetMBytes * 1024 * 1024;
     // https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texImage2D#internalformat
-    const textureWidth = 2000;
-    const textureHeight = 2000;
+
     const textures = Math.floor(targetBytes / (textureWidth * textureHeight * bytesPerTexel));
     const actualTargetBytes = textures * textureWidth * textureHeight * bytesPerTexel;
 
-    const canvas2D = document.createElement("canvas")! as HTMLCanvasElement;
-    canvas2D.width = textureWidth;
-    canvas2D.height = textureHeight;
-    const context2D = canvas2D.getContext("2d")!;
-
-    const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
-    const gl = canvas.getContext("webgl2");
-
     log(
         "Setup " +
+            bytesPerTexel +
+            " bytes per texel, " +
             textures +
             " textures, target " +
             actualTargetBytes / 1024 / 1024 +
@@ -62,7 +65,7 @@ function setup() {
 
         const allTextures: WebGLTexture[] = [];
 
-        const logEvery = 1024 * 1024 * 50;
+        const logEvery = 1024 * 1024 * 100;
         let alreadyLogged = 0;
 
         let i = 0;
@@ -105,7 +108,8 @@ function setup() {
             allTextures.push(texture);
             i++;
             // doTexture();
-            window.setTimeout(doTexture, 0);
+            // window.setTimeout(doTexture, 0);
+            doTexture();
             // requestAnimationFrame(doTexture);
         }
 
