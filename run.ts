@@ -71,6 +71,17 @@ function setup() {
             textureHeight
     );
 
+    const imageData = context2D.createImageData(textureWidth, textureHeight);
+
+    // const imageData = new Uint8Array(textureWidth * textureHeight * 4);
+
+    function fillRandomImageData() {
+        // crypto.getRandomValues(imageData);
+        for (let i = 0; i < imageData.height * imageData.width; i++) {
+            imageData[i] = Math.floor(Math.random() * 256);
+        }
+    }
+
     async function run() {
         start = performance.now();
 
@@ -88,18 +99,49 @@ function setup() {
             const texture = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_2D, texture);
             // random color
-            context2D.fillStyle = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-            context2D.fillRect(0, 0, textureWidth, textureHeight);
+            // context2D.fillStyle = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+            // context2D.fillRect(0, 0, textureWidth, textureHeight);
+            fillRandomImageData();
 
             switch (bytesPerTexel) {
                 case 1:
-                    gl.texImage2D(gl.TEXTURE_2D, 0, gl.ALPHA, gl.ALPHA, gl.UNSIGNED_BYTE, canvas2D);
+                    gl.texImage2D(
+                        gl.TEXTURE_2D,
+                        0,
+                        gl.ALPHA,
+                        textureWidth,
+                        textureHeight,
+                        0,
+                        gl.ALPHA,
+                        gl.UNSIGNED_BYTE,
+                        imageData
+                    );
                     break;
                 case 2:
-                    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_SHORT_4_4_4_4, canvas2D);
+                    gl.texImage2D(
+                        gl.TEXTURE_2D,
+                        0,
+                        gl.RGBA,
+                        textureWidth,
+                        textureHeight,
+                        0,
+                        gl.RGBA,
+                        gl.UNSIGNED_SHORT_4_4_4_4,
+                        imageData
+                    );
                     break;
                 case 4:
-                    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas2D);
+                    gl.texImage2D(
+                        gl.TEXTURE_2D,
+                        0,
+                        gl.RGBA,
+                        textureWidth,
+                        textureHeight,
+                        0,
+                        gl.RGBA,
+                        gl.UNSIGNED_BYTE,
+                        imageData
+                    );
                     break;
                 default:
                     throw new Error("Invalid bytesPerTexel");
