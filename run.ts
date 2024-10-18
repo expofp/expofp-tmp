@@ -39,6 +39,15 @@ const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 canvas.width = textureWidth;
 canvas.height = textureHeight;
 const gl = canvas.getContext("webgl2");
+// window.___gl = gl;
+
+// declare global {
+//     interface Window {
+//         ___gl: WebGL2RenderingContext;
+//     }
+// }
+
+// export {};
 
 const allTextures: WebGLTexture[] = [];
 
