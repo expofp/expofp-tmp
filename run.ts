@@ -147,6 +147,15 @@ function setup() {
                     throw new Error("Invalid bytesPerTexel");
             }
 
+            const err = gl.getError();
+            if (err !== gl.NO_ERROR) {
+                if (err === gl.OUT_OF_MEMORY) {
+                    log("Out of memory");
+                }
+                log("Error: " + err);
+                return;
+            }
+
             achievedBytes += textureWidth * textureHeight * bytesPerTexel;
             // if (achievedBytes % (1024 * 1024 * 100) === 0) {
             //     log("Allocated " + achievedBytes / 1024 / 1024 + " MB");
