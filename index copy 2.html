@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>v4</title>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1,
+    maximum-scale=1, user-scalable=0"
+        />
+        <meta http-equiv="expires" content="timestamp" />
+        <style>
+            * {
+                font-family: monospace;
+            }
+            input,
+            select {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var img1 = new Image();
+            img1.onerror = (e) => {
+                console.log(e);
+            };
+            img1.onload = () => {
+                var canvas = document.createElement("canvas");
+                canvas.width = img1.width;
+                canvas.height = img1.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img1, 0, 0);
+                var data = ctx.getImageData(0, 0, img1.width, img1.height).data;
+                console.log(data);
+            };
+            img1.crossOrigin = "anonymous";
+            // img.src = "https://demo.expofp.com/data/exhibitors/2782706/media/zenus64006.webp?v=2707197";
+            img1.src = "https://efp-data.s3.amazonaws.com/expos/demo/data/exhibitors/2782706/media/zenus64006.webp?v=2707197";
+
+            var img2 = new Image();
+            img2.onerror = (e) => {
+                console.log(e);
+            };
+            img2.onload = () => {
+                var canvas = document.createElement("canvas");
+                canvas.width = img2.width;
+                canvas.height = img2.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img2, 0, 0);
+                var data = ctx.getImageData(0, 0, img2.width, img2.height).data;
+                console.log(data);
+            };
+            img2.crossOrigin = "anonymous";
+            img2.src = "https://demo.expofp.com/data/exhibitors/2782706/media/zenus64006.webp?v=2707197";
+            // img2.src = "https://efp-data.s3.amazonaws.com/expos/demo/data/exhibitors/2782706/media/zenus64006.webp?v=2707197";
+        </script>
+    </body>
+</html>

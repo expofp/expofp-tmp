@@ -16,31 +16,25 @@
             select {
                 font-size: 20px;
             }
+            #logos > img {
+                border: solid 1px blue;
+            }
         </style>
-      <script type="module" crossorigin src="./assets/index-CoPe_iA2.js"></script>
     </head>
     <body>
-        <button id="startButton" style="width: 90vw; height: 20vh">Start</button>
-        <br />
-        <br />
-        Last achieved: <span id="lastMBytes"></span>
-        <br />
-        Bytes per texel:
-        <select id="bytesPerTexel">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="4">4</option>
-        </select>
-        <br />
-        MAX MBytes:
-        <input id="maxMBytes" type="number" />
+        <div id="logos" style="border: 1px black"></div>
 
-        <br />
-        <br />
-        <div>Log (from bottom to top):</div>
-        <pre id="log"></pre>
-        <!-- <canvas id="canvas2d" style="width: 300; height: 300"></canvas> -->
-        <canvas id="canvas" style="width: 300; height: 300"></canvas>
-
+        <script src="./data.js"></script>
+        <script>
+            const logoBase = "https://eurotierimg.expofp.com/data/";
+            const logos = __data.exhibitors.map((e) => e.logo).filter(Boolean);
+            for (const logo of logos) {
+                const logoUrl = logoBase + logo;
+                const img = document.createElement("img");
+                img.src = logoUrl;
+                document.getElementById("logos").appendChild(img);
+            
+            }
+        </script>
     </body>
 </html>
