@@ -19,28 +19,40 @@
         </style>
     </head>
     <body>
-        <button id="startButton" style="width: 90vw; height: 20vh">Start</button>
-        <br />
-        <br />
-        Last achieved: <span id="lastMBytes"></span>
-        <br />
-        Bytes per texel:
-        <select id="bytesPerTexel">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="4">4</option>
-        </select>
-        <br />
-        MAX MBytes:
-        <input id="maxMBytes" type="number" />
+        <script>
+            var img1 = new Image();
+            img1.onerror = (e) => {
+                console.log(e);
+            };
+            img1.onload = () => {
+                var canvas = document.createElement("canvas");
+                canvas.width = img1.width;
+                canvas.height = img1.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img1, 0, 0);
+                var data = ctx.getImageData(0, 0, img1.width, img1.height).data;
+                console.log(data);
+            };
+            img1.crossOrigin = "anonymous";
+            // img.src = "https://demo.expofp.com/data/exhibitors/2782706/media/zenus64006.webp?v=2707197";
+            img1.src = "https://efp-data.s3.amazonaws.com/expos/demo/data/exhibitors/2782706/media/zenus64006.webp?v=2707197";
 
-        <br />
-        <br />
-        <div>Log (from bottom to top):</div>
-        <pre id="log"></pre>
-        <!-- <canvas id="canvas2d" style="width: 300; height: 300"></canvas> -->
-        <canvas id="canvas" style="width: 300; height: 300"></canvas>
-
-        <script src="./run.ts" type="module"></script>
+            var img2 = new Image();
+            img2.onerror = (e) => {
+                console.log(e);
+            };
+            img2.onload = () => {
+                var canvas = document.createElement("canvas");
+                canvas.width = img2.width;
+                canvas.height = img2.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img2, 0, 0);
+                var data = ctx.getImageData(0, 0, img2.width, img2.height).data;
+                console.log(data);
+            };
+            img2.crossOrigin = "anonymous";
+            img2.src = "https://demo.expofp.com/data/exhibitors/2782706/media/zenus64006.webp?v=2707197";
+            // img2.src = "https://efp-data.s3.amazonaws.com/expos/demo/data/exhibitors/2782706/media/zenus64006.webp?v=2707197";
+        </script>
     </body>
 </html>

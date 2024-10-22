@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>v4</title>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1,
+    maximum-scale=1, user-scalable=0"
+        />
+        <meta http-equiv="expires" content="timestamp" />
+        <style>
+            * {
+                font-family: monospace;
+            }
+            input,
+            select {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="startButton" style="width: 90vw; height: 20vh">Start</button>
+        <br />
+        <br />
+        Last achieved: <span id="lastMBytes"></span>
+        <br />
+        Bytes per texel:
+        <select id="bytesPerTexel">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+        </select>
+        <br />
+        MAX MBytes:
+        <input id="maxMBytes" type="number" />
+
+        <br />
+        <br />
+        <div>Log (from bottom to top):</div>
+        <pre id="log"></pre>
+        <!-- <canvas id="canvas2d" style="width: 300; height: 300"></canvas> -->
+        <canvas id="canvas" style="width: 300; height: 300"></canvas>
+
+        <script src="./run.ts" type="module"></script>
+    </body>
+</html>

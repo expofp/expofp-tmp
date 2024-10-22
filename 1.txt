@@ -1,0 +1,50 @@
+/data/exhibitors/2782706/media/*
+
+
+
+
+
+
+
+curl -v -I 'https://demo.expofp.com/data/exhibitors/2782706/media/zenus64006.webp?v=2707197' \
+-X 'GET' \
+-H 'Origin: http://localhost:5173' \
+-H 'Accept: image/webp,image/avif,image/jxl,image/heic,image/heic-sequence,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5' \
+-H 'Referer: http://localhost:5173/' \
+-H 'Sec-Fetch-Dest: image' \
+-H 'Sec-Fetch-Mode: cors' \
+-H 'Sec-Fetch-Site: cross-site' \
+-H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0.1 Safari/605.1.15'
+
+
+
+curl -I -v 'https://efp-data.s3.amazonaws.com/expos/demo/data/exhibitors/2782706/media/zenus64006.webp?v=2707197' \
+-X 'GET' \
+-H 'Accept: image/webp,image/avif,image/jxl,image/heic,image/heic-sequence,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5' \
+-H 'Sec-Fetch-Site: cross-site' \
+-H 'Origin: http://localhost:5173' \
+-H 'Referer: http://localhost:5173/' \
+-H 'Sec-Fetch-Dest: image' \
+-H 'Accept-Language: en-US,en;q=0.9' \
+-H 'Sec-Fetch-Mode: cors' \
+-H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0.1 Safari/605.1.15' \
+-H 'Accept-Encoding: gzip, deflate, br' \
+-H 'Connection: keep-alive' \
+-H 'Priority: u=5, i'
+
+
+curl -I -v 'https://demo.expofp.com/data/exhibitors/2782706/media/zenus64006.webp?v=2707197' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7' \
+  -H 'cache-control: no-cache' \
+  -H 'origin: http://localhost:5173' \
+  -H 'pragma: no-cache' \
+  -H 'priority: i' \
+  -H 'referer: http://localhost:5173/' \
+  -H 'sec-ch-ua: "Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
